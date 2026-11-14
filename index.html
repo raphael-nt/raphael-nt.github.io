@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>iRAP Club</title>
+<title>iRAP Robot Club</title>
 <meta name="description" content="Tools for iRAP robotics activities">
 <link rel="icon" href="shared/irap-icon.png">
 <style>
@@ -24,15 +24,33 @@ a.pick:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
 a.pick b{font-size:22px;font-weight:600}
 a.pick span{color:var(--muted)}
 .vex{--c:var(--tape)} .alvik{--c:var(--teal)}
+main{position:relative;z-index:1}
+/* robot line art from the iRAP shirt set, faint in the corners */
+.art{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.art img{position:absolute;opacity:.13;height:auto}
+.art .w{display:none}
+.a1{width:min(46vw,520px);left:-4vw;bottom:-3vh}
+.a2{width:min(34vw,400px);right:-3vw;top:-4vh;transform:rotate(-8deg)}
+.a3{width:min(14vw,160px);right:5vw;bottom:4vh}
+@media (max-width:640px){.a1{width:80vw;left:-18vw;bottom:-4vh}.a2{width:60vw;right:-16vw;top:-3vh}.a3{display:none!important}}
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){--ink:#E8ECEA;--floor:#141718;--panel:#1E2224;--line:#3A4144;--muted:#A3ACA9}
+  :root:not([data-theme="light"]) .art .b{display:none}
+  :root:not([data-theme="light"]) .art .w{display:block}
 }
+:root[data-theme="dark"] .art .b{display:none}
+:root[data-theme="dark"] .art .w{display:block}
 :root[data-theme="dark"]{--ink:#E8ECEA;--floor:#141718;--panel:#1E2224;--line:#3A4144;--muted:#A3ACA9}
 </style>
 </head>
 <body>
+<div class="art" aria-hidden="true">
+<img class="a1 b" src="shared/art/legged_line_black.png" alt=""><img class="a1 w" src="shared/art/legged_line_white.png" alt="">
+<img class="a2 b" src="shared/art/rescue_line_sketch_black.png" alt=""><img class="a2 w" src="shared/art/rescue_line_sketch_white.png" alt="">
+<img class="a3 b" src="shared/art/service_line_black.png" alt=""><img class="a3 w" src="shared/art/service_line_white.png" alt="">
+</div>
 <main>
-<header><img src="shared/irap.png" alt="iRAP"><h1>iRAP Club</h1></header>
+<header><img src="shared/irap.png" alt="iRAP"><h1>iRAP Robot Club</h1></header>
 <a class="pick vex" href="vex-go-builder/"><b>VEX GO Builder</b><span>ประกอบหุ่น VEX GO แบบ 3D ดูขั้นตอนประกอบ และหมุนดูโมเดล</span></a>
 <a class="pick alvik" href="alvik-match-control/"><b>Alvik Match Control</b><span>ระบบจัดการแข่ง Arduino Alvik ทั้ง Admin, Dashboard และ Referee</span></a>
 </main>

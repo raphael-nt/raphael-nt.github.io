@@ -18,11 +18,21 @@ main{width:min(560px,100%);display:grid;gap:14px}
 header{display:flex;align-items:center;gap:14px;margin-bottom:6px}
 header img{height:48px}
 h1{margin:0;font-weight:600;font-size:26px;line-height:1.25}
-a.pick{display:grid;gap:2px;padding:18px 20px;background:var(--panel);border:1px solid var(--line);border-left:8px solid var(--c);border-radius:var(--r-md);color:inherit;text-decoration:none}
-a.pick:hover{border-color:var(--ink);border-left-color:var(--c)}
+a.pick{display:flex;align-items:center;gap:16px;padding:14px 18px 14px 14px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-md);color:inherit;text-decoration:none;transition:border-color .15s,transform .15s}
+a.pick:hover{border-color:var(--c);transform:translateY(-1px)}
 a.pick:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
-a.pick b{font-size:22px;font-weight:600}
-.vex{--c:var(--tape)} .alvik{--c:var(--teal)} .timer{--c:#1479C9}
+a.pick .ic{flex:none;width:48px;height:48px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c)}
+a.pick .ic svg{width:26px;height:26px}
+a.pick b{flex:1;font-size:20px;font-weight:600;line-height:1.3}
+a.pick .go{flex:none;width:18px;height:18px;color:var(--muted)}
+a.pick:hover .go{color:var(--c)}
+.vex{--c:#C99700} .alvik{--c:var(--teal)} .timer{--c:#1479C9} .sim{--c:#7A4FD0}
+.social{position:fixed;right:16px;bottom:16px;z-index:2;display:flex;gap:8px}
+.social a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:1px solid var(--line);color:var(--ink);transition:border-color .15s,color .15s}
+.social a:hover{border-color:var(--teal);color:var(--teal)}
+.social a:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.social svg{width:20px;height:20px}
+@media (max-width:640px){body{padding-bottom:84px}}
 main{position:relative;z-index:1}
 /* robot line art from the iRAP shirt set, faint in the corners */
 .art{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
@@ -50,9 +60,15 @@ main{position:relative;z-index:1}
 </div>
 <main>
 <header><img src="shared/irap.png" alt="iRAP"><h1>iRAP Robot Club</h1></header>
-<a class="pick vex" href="vex-go-builder/"><b>VEX GO Builder</b></a>
-<a class="pick timer" href="vex-unofficial-timer/"><b>VEX Unofficial Timer</b></a>
-<a class="pick alvik" href="alvik-match-control/"><b>Alvik Match Control</b></a>
+<a class="pick vex" href="vex-go-builder/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/><rect x="8" y="3" width="8" height="8" rx="1"/></svg></span><b>VEX GO Builder</b><svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+<a class="pick timer" href="vex-unofficial-timer/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6M12 2v3"/></svg></span><b>VEX Unofficial Timer</b><svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+<a class="pick alvik" href="alvik-match-control/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M9 17h6"/></svg></span><b>Arduino Day : Alvik Match Control</b><svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+<a class="pick sim" href="arduino-alvik-sim/"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M2 13v2M22 13v2"/><circle cx="12" cy="3.5" r="1"/></svg></span><b>Alvik Sim</b><svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
 </main>
+<nav class="social" aria-label="iRAP social media">
+<a href="https://www.facebook.com/iraprobot" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.9v3h2.6V21z"/></svg></a>
+<a href="https://www.instagram.com/irap_robot/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a>
+<a href="https://www.tiktok.com/@iraprobot" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2 1.7 3.4 3.9 3.6v3a7 7 0 0 1-3.9-1.2v6.3a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 .9.1v3.1a2.8 2.8 0 1 0 1.9 2.6V3z"/></svg></a>
+</nav>
 </body>
 </html>
